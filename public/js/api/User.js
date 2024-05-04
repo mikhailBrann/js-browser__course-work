@@ -40,12 +40,9 @@ class User {
    * авторизованном пользователе.
    * */
   static fetch(callback) {
-    const currentUser = this.current();
-    const url = this.URL + '/current';
     const userObj = this;
-
     const requestParams = {
-      url: url,
+      url: this.URL + '/current',
       method: 'GET',
       callback: (err, response) => {
         if(response?.success && response?.success == true) {
@@ -59,7 +56,6 @@ class User {
           userObj.unsetCurrent();
         }
         
-
         callback(err, response);
       }
     }
@@ -95,7 +91,22 @@ class User {
    * User.setCurrent.
    * */
   static register(data, callback) {
+    const userObj = this;
 
+    const requestParams = {
+      url: this.URL + '/register',
+      method: 'POST',
+      data: data,
+      callback: (err, response) => {
+        if(response.success && response.success == true) {
+          userObj.setCurrent(response.user);
+        } 
+         
+        callback(err, response);
+      }
+    }
+
+    createRequest(requestParams);
   }
 
   /**
@@ -114,7 +125,17 @@ class User {
 // });
 
 
-User.fetch(( err, response ) => {
-  console.log(response); // 2
-  console.log(err); // 2
-});
+// User.fetch(( err, response ) => {
+//   console.log(response); // 2
+//   console.log(err); // 2
+// });
+
+
+// User.register( {
+//   name: 'Vlad',
+//   email: 'test1@test.ru',
+//   password: 'abracadabra'
+// }, ( err, response ) => {
+//   console.log( err );
+//   console.log( response );
+// });

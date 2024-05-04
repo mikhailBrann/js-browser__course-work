@@ -114,28 +114,18 @@ class User {
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
   static logout(callback) {
+    const userObj = this;
 
+    const requestParams = {
+      url: this.URL + '/logout',
+      method: 'POST',
+      data: userObj.current(),
+      callback: (err, response) => {
+        userObj.unsetCurrent();
+        callback(err, response);
+      }
+    }
+
+    createRequest(requestParams);
   }
 }
-
-
-// User.login({'email': 'demo@demo', 'password': 'demo'}, (err, response) => {
-//   console.log(err);
-//   console.log(response);
-// });
-
-
-// User.fetch(( err, response ) => {
-//   console.log(response); // 2
-//   console.log(err); // 2
-// });
-
-
-// User.register( {
-//   name: 'Vlad',
-//   email: 'test1@test.ru',
-//   password: 'abracadabra'
-// }, ( err, response ) => {
-//   console.log( err );
-//   console.log( response );
-// });

@@ -20,6 +20,10 @@ class LoginForm extends AsyncForm {
         form.reset();
         modal.close();
       }
+
+      if(response?.error) {
+        console.error(response.error);
+      }
     });
   }
 }

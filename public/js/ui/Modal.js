@@ -32,10 +32,10 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    const closeElem = this.element.querySelector("[data-dismiss=modal]");
+    const closeElems = Array.from(this.element.querySelectorAll("[data-dismiss=modal]"));
     const modalObj = this;
 
-    closeElem.addEventListener("click", () => modalObj.onClose(modalObj));
+    closeElems.forEach(elem => elem.addEventListener("click", () => modalObj.onClose(modalObj)));
   }
 
   /**

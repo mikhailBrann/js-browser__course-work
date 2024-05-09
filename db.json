@@ -11,6 +11,12 @@
       "email": "test@test.ru",
       "password": "test",
       "id": "405wf62llvqtzg96"
+    },
+    {
+      "name": "test",
+      "email": "test@test",
+      "password": "test",
+      "id": "405wf69klvz08xi6"
     }
   ],
   "accounts": [

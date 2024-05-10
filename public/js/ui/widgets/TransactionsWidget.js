@@ -11,7 +11,17 @@ class TransactionsWidget {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor( element ) {
+  constructor(element) {
+    try {
+      if(!element) {
+        throw new Error("Такого элемента нет в рендере страницы!");
+      }
+
+      this.element = element;
+      this.registerEvents();
+    } catch(error) {
+      console.error(error);
+    }
 
   }
   /**
@@ -21,6 +31,19 @@ class TransactionsWidget {
    * экземпляра окна
    * */
   registerEvents() {
+    const incomeCallFormBtn = document.querySelector(".create-income-button");
+    const expenseCallFormBtn = document.querySelector(".create-expense-button");
+    const clickEventHendler = modalId => {
+      const modal = App.getModal(modalId);
+      modal.open();
+    };
 
+    if(incomeCallFormBtn) {
+      incomeCallFormBtn.addEventListener("click", () => clickEventHendler("newIncome"));
+    }
+
+    if(expenseCallFormBtn) {
+      expenseCallFormBtn.addEventListener("click", () => clickEventHendler("newExpense"));
+    }
   }
 }

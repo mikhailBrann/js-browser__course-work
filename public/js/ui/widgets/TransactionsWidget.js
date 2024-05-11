@@ -22,7 +22,6 @@ class TransactionsWidget {
     } catch(error) {
       console.error(error);
     }
-
   }
   /**
    * Регистрирует обработчики нажатия на

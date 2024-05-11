@@ -24,8 +24,6 @@ class CreateTransactionForm extends AsyncForm {
       return;
     }
 
-    console.log(selectField);
-
     Account.list(currentUser.id, (err, response) => {
       if(response && response.data) {
         selectField.innerHTML = "";

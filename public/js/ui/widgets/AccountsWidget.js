@@ -90,7 +90,7 @@ class AccountsWidget {
    * счёта класс .active.
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
-  onSelectAccount( element ) {
+  onSelectAccount(element) {
     const activeElems = Array.from(document.querySelectorAll(".account.active"));
 
     if(activeElems.length) {

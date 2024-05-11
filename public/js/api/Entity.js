@@ -12,7 +12,7 @@ class Entity {
    * */
   static list(data, callback){
     const requestParams = {
-      url: this.URL,
+      url: data.url ?? this.URL,
       data: data,
       method: 'GET',
       callback: callback
@@ -28,7 +28,7 @@ class Entity {
    * */
   static create(data, callback) {
     const requestParams = {
-      url: this.URL,
+      url: data.url ?? this.URL,
       data: data,
       method: 'PUT',
       callback: callback
@@ -43,7 +43,7 @@ class Entity {
    * */
   static remove(data, callback ) {
     const requestParams = {
-      url: this.URL,
+      url: data.url ?? this.URL,
       data: data,
       method: 'DELETE',
       callback: callback
